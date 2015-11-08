@@ -38,6 +38,7 @@
     <phingcall target="phpcs" />
     <phingcall target="phpdoc" />
  <phingcall target="phpunit" />
+    <phingcall target="phpcbf" />
     <phingcall target="phpcb" />
 </target>
 
@@ -104,10 +105,10 @@
 </target>
 
 <target name="phpunit">
-    <exec logoutput="true" dir="${project.basedir}/tests" command="phpunit" escape="false" />
+    <exec logoutput="true" dir="${project.basedir}/tests" command="phpunit" escape="false"/>
 </target>
 
-<target name="phpcb">
+<target name="phpcbf">
  <exec executable="phpcbf" logoutput="true">
             <arg value="--tabWidth=4"/>
             <arg value="--standard=PSR2"/>
@@ -116,6 +117,11 @@
             <arg path="${project.basedir}/www"/>
             <arg path="${project.basedir}/build/code-browser"/>
         </exec>
+</target>
+
+
+<target name="phpcb">
+    <exec logoutput="true" command="phpcb --log '${project.basedir}/build/logs' --source '${project.basedir}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
 </target>
 
 
