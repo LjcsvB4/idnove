@@ -58,11 +58,13 @@
 </target>
 
 
-<target name="phpcpd">
-    <phpcpd file="${project.basedir}/${source}/www">
-        <formatter type="pmd" outfile="${project.basedir}/build/logs/pmd-cpd.xml"/>
-    </phpcpd>
-</target>
+
+<target name="phpcpd" description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="phpcpd" logoutput="true">
+            <arg path="${project.basedir}/${source}/www"/>
+        </exec>
+    </target>
+
 
 
 
