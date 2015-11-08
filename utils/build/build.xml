@@ -102,12 +102,19 @@
     <exec logoutput="true" dir="${project.basedir}/${source}/tests" command="phpunit" escape="false" />
 </target>
 
-
-
-
 <target name="phpcb">
-    <exec logoutput="true" command="phpcbf --standard='Zend' --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
+ <exec executable="phpcbf" logoutput="true">
+            <arg value="--tabWidth=4"/>
+            <arg value="--standard=PSR2"/>
+            <arg value="--extensions=php"/>
+            <arg value="--ignore=autoload.php"/>
+            <arg path="${project.basedir}/${source}/www"/>
+            <arg path="${project.basedir}/build/code-browser"/>
+        </exec>
 </target>
+<!--<target name="phpcb">
+    <exec logoutput="true" command="phpcbf --standard='Zend' --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
+</target>-->
 
 
 </project>
