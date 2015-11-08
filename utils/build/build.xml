@@ -106,7 +106,7 @@
 
 
 <target name="phpcb">
-    <exec logoutput="true" command="phpcb --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
+    <exec logoutput="true" command="phpcbf --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
 </target>
 
 
