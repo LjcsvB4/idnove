@@ -19,12 +19,12 @@
               <a class="log logHello">Hello <?= $oUser->username; ?></a>        	
       	    <?php else : ?>
       	  	  <a class="log" href="connexion.php">Log in</a>    
-            <?php endif ; ?>
+           <?php endif ; ?>
           	<?php if (isset($_SESSION['utilisateur'])) : ?>
 				      <a href="account.php" class="btn">My Account</a>
           	<?php else : ?>
             	<a href="register.php" class="btn">Sign up</a>
-            <?php endif; ?>
+           <?php endif; ?>
           </div>
         </div>
       </div>  

@@ -51,13 +51,11 @@
 </target>
 
 
-<target name="phpmd">
-    <phpmd file="${project.basedir}/www">
-        <formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
-    </phpmd>
-</target>
 
 
+<target name="phpmd" description="Generate pmd.xml using PHPMD">
+		<exec logoutput="true" spawn="true" command="phpmd ${project.basedir}/www xml codesize,design,naming,unusedcode --reportfile ${project.basedir}/build/phpmd.xml" />
+	</target>
 
 <target name="phpcpd" description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="phpcpd" logoutput="true">
