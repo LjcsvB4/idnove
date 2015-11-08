@@ -112,9 +112,7 @@
             <arg path="${project.basedir}/build/code-browser"/>
         </exec>
 </target>
-<!--<target name="phpcb">
-    <exec logoutput="true" command="phpcbf --standard='Zend' --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
-</target>-->
+
 
 
 </project>
