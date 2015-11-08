@@ -1,5 +1,5 @@
 <?php
-    
+//jdfmqksjfqmsdkfjqsdmkfjqdsfmkdqsjfmqsdkfjsdmkj
 //Paramètre de connexions
 require_once $_SERVER['DOCUMENT_ROOT'] . 'idnove/config.php';
 
