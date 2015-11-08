@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="TestJenkins" default="ci" basedir="../..">
-
+<project name="TestJenkins" default="ci" basedir="./">
+	
 
 
 <property name="source" value="job_1/workspace" />
