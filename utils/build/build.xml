@@ -4,7 +4,7 @@
 
 
 
- <property name="source" value="src" />
+<!--<property name="source" value="job_1/workspace" />-->
 
     <target name="ci"
         description="Tâche principale d'intégration continue"
@@ -52,28 +52,28 @@
 
 
 <target name="phpmd">
-    <phpmd file="${project.basedir}/${source}/www">
+    <phpmd file="${project.basedir}/www">
         <formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
     </phpmd>
 </target>
 
 
 <target name="phpcpd">
-    <phpcpd file="${project.basedir}/${source}/www">
+    <phpcpd file="${project.basedir}/www">
         <formatter type="pmd" outfile="${project.basedir}/build/logs/pmd-cpd.xml"/>
     </phpcpd>
 </target>
 
 
 <target name="phploc">
-    <exec logoutput="true" dir="${project.basedir}" command="phploc --log-csv '${project.basedir}/build/logs/phploc.csv' '${project.basedir}/${source}/www'" escape="false" />
+    <exec logoutput="true" dir="${project.basedir}" command="phploc --log-csv '${project.basedir}/build/logs/phploc.csv' '${project.basedir}/www'" escape="false" />
 </target>
 
 
 
 <target name="phpcs">
     <phpcodesniffer standard="Zend">
-        <fileset dir="${project.basedir}/${source}/www">
+        <fileset dir="${project.basedir}/www">
             <include name="**/*.php"/>
         </fileset>
         <formatter type="checkstyle" outfile="${project.basedir}/build/logs/checkstyle.xml"/>
@@ -87,7 +87,7 @@
             destdir="${project.basedir}/build/api"
             sourcecode="false"
             output="HTML:Smarty:PHP">
-        <fileset dir="${project.basedir}/${source}/www">
+        <fileset dir="${project.basedir}/www">
             <include name="**/*.php"/>
         </fileset>
         <projdocfileset dir=".">
@@ -99,14 +99,14 @@
 </target>
 
 <target name="phpunit">
-    <exec logoutput="true" dir="${project.basedir}/${source}/tests" command="phpunit" escape="false" />
+    <exec logoutput="true" dir="${project.basedir}/tests" command="phpunit" escape="false" />
 </target>
 
 
 
 
 <target name="phpcb">
-    <exec logoutput="true" command="phpcb --log '${project.basedir}/build/logs' --source '${project.basedir}/${source}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
+    <exec logoutput="true" command="phpcb --log '${project.basedir}/build/logs' --source '${project.basedir}/www' --output '${project.basedir}/build/code-browser'" escape="false" />
 </target>
 
 
