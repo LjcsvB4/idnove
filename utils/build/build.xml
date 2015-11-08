@@ -4,7 +4,7 @@
 	
 
 
-<property name="source" value="job_1/workspace" />
+<!--<property name="source" value="job_1/workspace" />-->
 
     <target name="ci"
         description="Tâche principale d'intégration continue"
@@ -43,7 +43,7 @@
 
 
 <target name="pdepend">
-    <phpdepend file="${project.basedir}/${source}/www">
+    <phpdepend file="${project.basedir}/www">
         <logger type="jdepend-xml" outfile="${project.basedir}/build/logs/jdepend.xml" />
         <logger type="jdepend-chart" outfile="${project.basedir}/build/pdepend/dependencies.svg" />
         <logger type="overview-pyramid" outfile="${project.basedir}/build/pdepend/overview-pyramid.svg" />
@@ -52,7 +52,7 @@
 
 
 <target name="phpmd">
-    <phpmd file="${project.basedir}/${source}/www">
+    <phpmd file="${project.basedir}/www">
         <formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
     </phpmd>
 </target>
@@ -61,7 +61,7 @@
 
 <target name="phpcpd" description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="phpcpd" logoutput="true">
-            <arg path="${project.basedir}/${source}/www"/>
+            <arg path="${project.basedir}/www"/>
         </exec>
     </target>
 
@@ -71,14 +71,14 @@
 
 
 <target name="phploc">
-    <exec logoutput="true" dir="${project.basedir}" command="phploc --log-csv '${project.basedir}/build/logs/phploc.csv' '${project.basedir}/${source}/www'" escape="false" />
+    <exec logoutput="true" dir="${project.basedir}" command="phploc --log-csv '${project.basedir}/build/logs/phploc.csv' '${project.basedir}/www'" escape="false" />
 </target>
 
 
 
 <target name="phpcs">
     <phpcodesniffer standard="Zend">
-        <fileset dir="${project.basedir}/${source}/www">
+        <fileset dir="${project.basedir}/www">
             <include name="**/*.php"/>
         </fileset>
         <formatter type="checkstyle" outfile="${project.basedir}/build/logs/checkstyle.xml"/>
@@ -92,7 +92,7 @@
             destdir="${project.basedir}/build/api"
             sourcecode="false"
             output="HTML:Smarty:PHP">
-        <fileset dir="${project.basedir}/${source}/www">
+        <fileset dir="${project.basedir}/www">
             <include name="**/*.php"/>
         </fileset>
         <projdocfileset dir=".">
@@ -104,7 +104,7 @@
 </target>
 
 <target name="phpunit">
-    <exec logoutput="true" dir="${project.basedir}/${source}/tests" command="phpunit" escape="false" />
+    <exec logoutput="true" dir="${project.basedir}/tests" command="phpunit" escape="false" />
 </target>
 
 <target name="phpcb">
@@ -113,7 +113,7 @@
             <arg value="--standard=PSR2"/>
             <arg value="--extensions=php"/>
             <arg value="--ignore=autoload.php"/>
-            <arg path="${project.basedir}/${source}/www"/>
+            <arg path="${project.basedir}/www"/>
             <arg path="${project.basedir}/build/code-browser"/>
         </exec>
 </target>
